@@ -52,23 +52,6 @@ def mostrar_expedientes(expedientes=None):
     print("=" * 70)
 
 
-def mostrar_todos(expedientes=None):
-    """Alias usado por main.py (RF-07): muestra el listado completo."""
-    mostrar_expedientes(expedientes)
-
-
-def mostrar_detalle_expediente(expediente):
-    """Muestra todos los campos de un expediente encontrado (RF-05)."""
-    print("-" * 50)
-    print(f"Código         : {expediente['codigo']}")
-    print(f"DNI            : {expediente['dni']}")
-    print(f"Nombre         : {expediente['nombre']}")
-    print(f"Tipo documento : {expediente['tipo_documento']}")
-    print(f"Descripción    : {expediente['descripcion']}")
-    print(f"Fecha          : {expediente['fecha']}")
-    print("-" * 50)
-
-
 # --- Prueba rápida de este módulo por separado ---
 if __name__ == "__main__":
     mostrar_expedientes()
