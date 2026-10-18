@@ -19,21 +19,6 @@ CRITERIOS_VALIDOS = {
 }
 
 
-def clave_orden(expediente, campo):
-    """
-    Devuelve el valor con el que se compara un expediente.
-    Las fechas DD/MM/AAAA se convierten a AAAA/MM/DD para que el
-    orden alfabético coincida con el orden cronológico real
-    (si no, "15/01/2026" quedaría antes que "02/10/2025").
-    """
-    valor = expediente[campo].strip().lower()
-    if campo == "fecha":
-        partes = valor.split("/")
-        if len(partes) == 3:
-            valor = partes[2] + "/" + partes[1] + "/" + partes[0]
-    return valor
-
-
 def ordenar_expedientes(expedientes=None, criterio="fecha", ascendente=True):
     """
     Ordena una copia de la lista de expedientes según el criterio
@@ -57,8 +42,8 @@ def ordenar_expedientes(expedientes=None, criterio="fecha", ascendente=True):
     # Ordenamiento burbuja
     for i in range(n - 1):
         for j in range(n - 1 - i):
-            valor_actual = clave_orden(lista[j], campo)
-            valor_siguiente = clave_orden(lista[j + 1], campo)
+            valor_actual = lista[j][campo].strip().lower()
+            valor_siguiente = lista[j + 1][campo].strip().lower()
 
             si_intercambia = (
                 valor_actual > valor_siguiente
